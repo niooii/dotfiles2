@@ -1,5 +1,0 @@
-{
-    "wallpaper": {
-        "postHook": "python3 -I ~/.config/caelestia/wallpaper-hook.py"
-    }
-}
