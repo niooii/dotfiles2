@@ -7,3 +7,8 @@ mode = "symlink"
 
 [data]
     minimalist = {{ $minimalist }}
+
+[git]
+    # Commit every change made through chezmoi (add, edit, re-add, ...).
+    # Set autoPush = true once the GitHub remote exists.
+    autoCommit = true
