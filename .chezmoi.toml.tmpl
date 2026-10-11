@@ -1,0 +1,9 @@
+{{- /* Asked once per machine on `chezmoi init` */ -}}
+{{- $minimalist := promptBoolOnce . "minimalist" "Use the minimalist preset (faster, fewer animations)" -}}
+
+# Plain files in ~ become symlinks into the source dir, so editing them edits the repo.
+# Templates are rendered as regular files; edit those with `chezmoi edit`.
+mode = "symlink"
+
+[data]
+    minimalist = {{ $minimalist }}

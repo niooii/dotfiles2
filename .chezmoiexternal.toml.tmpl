@@ -1,0 +1,20 @@
+{{- /* Upstream caelestia configs, pinned to .caelestiaRev in .chezmoidata/caelestia.yaml.
+       Personal tweaks go in ~/.config/caelestia/hypr-vars.lua and hypr-user.lua instead. */ -}}
+{{- $url := printf "https://github.com/caelestia-dots/caelestia/archive/%s.tar.gz" .caelestiaRev -}}
+{{- range list "hypr" "fish" "foot" "fastfetch" "uwsm" }}
+[".config/{{ . }}"]
+    type = "archive"
+    url = "{{ $url }}"
+    stripComponents = 2
+    include = ["*/{{ . }}", "*/{{ . }}/**"]
+{{ end }}
+[".config/starship.toml"]
+    type = "archive-file"
+    url = "{{ $url }}"
+    stripComponents = 1
+    path = "starship.toml"
+
+# Neovim config, its own repo
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/niooii/nvim.git"

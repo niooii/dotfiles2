@@ -1,0 +1,214 @@
+## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
+## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀
+## ░▀▀▀░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀░░
+
+# Sets user-defined palette
+palette = "catppuccin_mocha"
+
+# Setups
+format="$directory$git_branch$character"
+right_format = """$git_status$cmd_duration"""
+add_newline = false 
+
+# Other languages configurations:
+# c.disabled = true
+# cmake.disabled = true
+# haskell.disabled = true
+# python.disabled = true
+# ruby.disabled = true
+# rust.disabled = true
+# perl.disabled = true
+# package.disabled = true
+# lua.disabled = true
+# nodejs.disabled = true
+# java.disabled = true
+# golang.disabled = true
+
+[conda]
+format = ' [$symbol$environment](dimmed green) '
+
+# Prompt symbols 
+[character]
+success_symbol = "[](green bold)"
+error_symbol = "[](pink)"
+vicmd_symbol = "[](peach)"
+
+[directory]
+format = "[]($style)[ ](bg:base fg:pink)[$path](bg:base fg:lavender bold)[ ]($style)"
+style = "bg:none fg:base"
+truncation_length = 3
+truncate_to_repo=false
+
+[git_branch]
+format = "[]($style)[[ ](bg:base fg:green bold)$branch](bg:base fg:lavender)[ ]($style)"
+style = "bg:none fg:base"
+
+[git_status]
+# $all status$ahead_behind
+format = "[]($style)[$all_status$ahead_behind](bg:base fg:yellow)[ ]($style)"
+style = "bg:none fg:base"
+conflicted = "="
+ahead =	"⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = ""
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "${count}"
+
+# [git_status]
+# style = "fg:#a6e3a1 bg:#252a3e"
+# ahead = "⇡${count}"
+# diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+# behind = "⇣${count}"
+# deleted = "x"
+# format = '[$all_status$ahead_behind ]($style)'
+
+[aws]
+symbol = " "
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+# [conda]
+# symbol = ""
+# style = "fg:#cba6f7 bg:#2c324a"
+# format = '[ $symbol ($version )]($style)'
+
+[dart]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[c]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[docker_context]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol $context]($style) $path '
+
+[elixir]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[elm]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[golang]
+symbol = "ﳑ"
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[haskell]
+symbol = "λ"
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[java]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[julia]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[lua]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[nim]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[nix_shell]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#cba6f7 bg:#f00"
+format = '[ $symbol ($version )]($style)'
+
+[perl]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[php]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[python]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[ruby]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[rust]
+symbol = "🦀"
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[swift]
+symbol = "ﯣ"
+style = "fg:#cba6f7 bg:#2c324a"
+format = '[ $symbol ($version )]($style)'
+
+[package]
+symbol = ""
+style = "fg:#cba6f7 bg:#2c324a"
+format = "[ $symbol $version]($style)"
+disabled = true
+
+[cmd_duration]
+min_time = 1
+# duration & style 
+format = "[]($style)[[神](bg:base fg:flamingo bold)$duration](bg:base fg:text)[ ]($style)"
+disabled = false
+style = "bg:none fg:base"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

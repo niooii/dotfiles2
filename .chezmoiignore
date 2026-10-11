@@ -1,0 +1,4 @@
+.config/zsh/.zcompdump*
+{{- if not .minimalist }}
+.config/caelestia/shell-tokens.json
+{{- end }}

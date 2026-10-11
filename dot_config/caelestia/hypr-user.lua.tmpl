@@ -1,0 +1,59 @@
+-- Personal Hyprland config, loaded last by ~/.config/hypr/hyprland.lua.
+-- Variable and keybind overrides are in hypr-vars.lua.
+
+hl.config({
+    input = {
+        sensitivity    = 0,
+        accel_profile  = "flat",
+        force_no_accel = true,
+    },
+    general = {
+        allow_tearing = true, -- Allows the `immediate` window rule to work
+    },
+    misc = {
+        focus_on_activate = false,
+    },
+})
+
+-- Allow tearing in osu!
+hl.window_rule({ match = { class = "osu!\\.exe" }, immediate = true })
+
+{{ if .minimalist -}}
+-- Minimalist preset: instant workspace switching
+hl.animation({ leaf = "workspaces", enabled = false, speed = 5, bezier = "standard" })
+
+{{ end -}}
+-- Vim-style focus and move
+for key, dir in pairs({ h = "left", j = "down", k = "up", l = "right" }) do
+    hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = dir }))
+    hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ direction = dir }))
+end
+
+-- Focus the next window and bring it to the front
+hl.bind("ALT + TAB", function()
+    hl.dispatch(hl.dsp.window.cycle_next())
+    hl.dispatch(hl.dsp.window.bring_to_top())
+end)
+
+-- Special workspaces, without auto-launching their apps
+hl.bind("SUPER + M", hl.dsp.workspace.toggle_special("music"))
+hl.bind("SUPER + D", hl.dsp.workspace.toggle_special("communication"))
+hl.bind("SUPER + R", hl.dsp.workspace.toggle_special("todo"))
+
+-- Launcher: tapping Super toggles it, Super + any other key or mouse button doesn't.
+-- Upstream binds it on release with no interrupt, so releasing Super after e.g. Super+1 also opens it.
+-- Catchall binds have to be defined in a submap (submap_universal makes this one apply in all of them)
+-- and can't require a modifier, so it checks for Super itself. Since Hyprland 0.56, catchall binds
+-- also fire alongside specific binds in bind order, including on the Super_L press itself, so the
+-- launcher press (which resets the interrupt) has to be bound after it.
+hl.define_submap("caelestia-launcher", function()
+    hl.bind("catchall", function()
+        if hl.is_key_down("Super_L") or hl.is_key_down("Super_R") then
+            hl.dispatch(hl.dsp.global("caelestia:launcherInterrupt"))
+        end
+    end, { ignore_mods = true, non_consuming = true, submap_universal = true })
+end)
+hl.bind("SUPER + SUPER_L", hl.dsp.global("caelestia:launcher"), { ignore_mods = true })
+for _, button in ipairs({ "mouse:272", "mouse:273", "mouse:274", "mouse:275", "mouse:276", "mouse:277", "mouse_up", "mouse_down" }) do
+    hl.bind("SUPER + " .. button, hl.dsp.global("caelestia:launcherInterrupt"), { non_consuming = true })
+end

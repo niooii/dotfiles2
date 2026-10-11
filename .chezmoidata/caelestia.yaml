@@ -1,0 +1,3 @@
+# Upstream caelestia dots commit for .chezmoiexternal.toml.tmpl.
+# To update: change this, then run `chezmoi diff` and `chezmoi apply`.
+caelestiaRev: 158ac301a3ca8f8619e6a506e4d89b00b9a7ea19

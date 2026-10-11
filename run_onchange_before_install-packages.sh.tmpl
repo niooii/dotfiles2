@@ -1,0 +1,29 @@
+#!/bin/bash
+# Installs the packages listed in .chezmoidata/packages.yaml.
+# chezmoi re-runs this whenever the rendered script changes, i.e. whenever the list changes.
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+set -euo pipefail
+
+# pacman -T prints the packages that aren't installed
+missing=$(pacman -T {{ .packages.pacman | join " " }} || true)
+if [[ -n $missing ]]; then
+    echo "Installing: $missing"
+    sudo pacman -S --needed --noconfirm $missing
+fi
+
+if ! command -v yay >/dev/null; then
+    echo "Installing yay"
+    tmp=$(mktemp -d)
+    git clone --depth 1 https://aur.archlinux.org/yay-bin.git "$tmp/yay-bin"
+    (cd "$tmp/yay-bin" && makepkg -si --noconfirm)
+    rm -rf "$tmp"
+fi
+
+missing=$(pacman -T {{ .packages.aur | join " " }} || true)
+if [[ -n $missing ]]; then
+    echo "Installing from the AUR: $missing"
+    yay -S --needed --noconfirm $missing
+fi
+{{ else -}}
+echo "Package install script only supports Arch, skipping"
+{{ end -}}

@@ -1,0 +1,27 @@
+# Installed by run_onchange_before_install-packages.sh.tmpl, which re-runs whenever this changes
+packages:
+  pacman:
+    - base-devel
+    - git
+    - openssh
+    - zsh
+    - neovim
+    - less
+    - zoxide
+    - starship
+    - kitty
+    - eza
+    - micro
+    - fnm
+    - uv
+    - chezmoi
+    - discord
+    - flatpak
+    - hyprland
+    - sddm
+    - networkmanager
+  aur:
+    - caelestia-meta
+    - caelestia-shell
+    - zen-browser-bin
+    - claude-code
