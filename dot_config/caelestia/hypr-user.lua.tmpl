@@ -19,8 +19,9 @@ hl.config({
 hl.window_rule({ match = { class = "osu!\\.exe" }, immediate = true })
 
 {{ if .minimalist -}}
--- Minimalist preset: instant workspace switching
+-- Minimalist preset: instant workspace switching, including special workspaces (no slide)
 hl.animation({ leaf = "workspaces", enabled = false, speed = 5, bezier = "standard" })
+hl.animation({ leaf = "specialWorkspace", enabled = false, speed = 4, bezier = "specialWorkSwitch" })
 
 {{ end -}}
 -- Vim-style focus and move
