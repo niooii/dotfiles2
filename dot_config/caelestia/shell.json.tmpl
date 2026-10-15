@@ -9,6 +9,22 @@
         "deformScale": 0
 {{- end }}
     },
+    "general": {
+        "idle": {
+            "timeouts": [
+                {
+                    "timeout": 180,
+                    "idleAction": "lock"
+                },
+                {
+                    "timeout": 300,
+                    "idleAction": [
+                        "suspend"
+                    ]
+                }
+            ]
+        }
+    },
     "launcher": {
         "actions": [
             {
@@ -133,9 +149,9 @@
             {
                 "name": "Sleep",
                 "icon": "bedtime",
-                "description": "Suspend then hibernate",
+                "description": "Suspend the system",
                 "command": [
-                    "suspendThenHibernate"
+                    "suspend"
                 ],
                 "enabled": true,
                 "dangerous": false
